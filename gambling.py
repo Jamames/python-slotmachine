@@ -28,23 +28,19 @@ def play():
             break
 
 def get_bet(bank):
-    print("du har", bank,"dollar i banken")
-    bet = int(input("Hur mycket pengar vill du satsa? "))
+    bet = 0
+    while bet < bank:
+        print("du har", bank,"dollar i banken")
+        bet = int(input("Hur mycket pengar vill du satsa? "))
+        if bet < bank:
+            return bet
+        else:
+            continue
+    
     return bet
 
-def play_again():
-    '''
-    This function asks the user if play should continue. Returns True if the player 
-    wants to play again and False otherwise.
-    '''
-    play_again_user_input = input("Play again? (y/n) -> ")
-    play_again_bool = (play_again_user_input ==
-                       "y" or play_again_user_input == "Y")
-    return play_again_bool
-
-
 def generate_random_symbols():
-    return rand.choices(SYMBOLS, k=5)
+    return rand.choices(SYMBOLS, k=3)
 
 
 def calculate_winnings(random_symbols: list):
@@ -58,13 +54,9 @@ def calculate_winnings(random_symbols: list):
 
 def get_multiplier(max_count):
     if max_count == 2:
-        return 0.5
-    elif max_count == 3:
         return 2
-    elif max_count == 4:
-        return 4
-    elif max_count == 5:
-        return 10
+    elif max_count == 3:
+        return 5
     else:
         return 0
 
