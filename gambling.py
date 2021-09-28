@@ -35,9 +35,9 @@ def get_bet(bank):
         if bet < bank:
             return bet
         else:
-            continue
+            print("Du har inte", bet,"dollar i banken")
+            bet = 0
     
-    return bet
 
 def generate_random_symbols():
     return rand.choices(SYMBOLS, k=3)
@@ -54,9 +54,9 @@ def calculate_winnings(random_symbols: list):
 
 def get_multiplier(max_count):
     if max_count == 2:
-        return 2
+        return 3
     elif max_count == 3:
-        return 5
+        return 6
     else:
         return 0
 
